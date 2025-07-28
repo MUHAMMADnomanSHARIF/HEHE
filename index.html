@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Typing hehe 😄</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      font-size: 2em;
+      background: #f0f8ff;
+      color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #output {
+      white-space: pre-wrap;
+      border-right: 2px solid #222;
+      padding-right: 5px;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="output"></div>
+
+  <script>
+    const text = "hehe 😄";
+    const output = document.getElementById("output");
+    let index = 0;
+
+    function typeLoop() {
+      if (index < text.length) {
+        output.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeLoop, 200); // Typing speed (in ms)
+      } else {
+        output.textContent += '\n'; // New line after full word
+        index = 0;
+        setTimeout(typeLoop, 500); // Pause before next "hehe 😄"
+      }
+    }
+
+    window.onload = typeLoop;
+  </script>
+</body>
+</html>
